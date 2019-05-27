@@ -1,0 +1,43 @@
+﻿@using Template_RealEstate_20052019.Areas.FrontEnd.Models
+@using Template_RealEstate_20052019.Extensions
+@model List<Utility>
+
+@if (Model != null && Model.Any())
+{
+    <!-- Start Service area -->
+    <div id="utility" class="services-area area-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="section-headline services-head text-center">
+                        <h2>Tiện ích</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="services-contents">
+                    <!-- Start Left services -->
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="about-move">
+                                <div class="services-details">
+                                    <div class="single-services">
+                                        <a class="services-icon" href="#">
+                                            <i class="@item.Type.GetSymbolClassName()"></i>
+                                        </a>
+                                        <h4>@item.Type.GetDescription()</h4>
+                                        @Html.Raw(item.Description)
+                                    </div>
+                                </div>
+                                <!-- end about-details -->
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Service area -->
+}
+

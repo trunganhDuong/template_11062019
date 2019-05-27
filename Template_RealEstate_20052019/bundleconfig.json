@@ -1,0 +1,78 @@
+﻿[
+  {
+    "outputFileName": "wwwroot/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/admin/dist/css/site.min.css",
+    "inputFiles": [
+      "wwwroot/admin/dist/css/site.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/style.min.css",
+    "inputFiles": [
+      "wwwroot/css/style.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/responsive.min.css",
+    "inputFiles": [
+      "wwwroot/css/responsive.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/nivo-slider-theme.min.css",
+    "inputFiles": [
+      "wwwroot/css/nivo-slider-theme.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/nivo-slider/css/nivo-slider.min.css",
+    "inputFiles": [
+      "wwwroot/lib/nivo-slider/css/nivo-slider.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/owlcarousel/owl.carousel.min.css",
+    "inputFiles": [
+      "wwwroot/lib/owlcarousel/owl.carousel.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/owlcarousel/owl.transitions.min.css",
+    "inputFiles": [
+      "wwwroot/lib/owlcarousel/owl.transitions.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/venobox/venobox.min.css",
+    "inputFiles": [
+      "wwwroot/lib/venobox/venobox.css"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site.min.js",
+    "inputFiles": [
+      "wwwroot/js/site.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/js/main.min.js",
+    "inputFiles": [
+      "wwwroot/js/main.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  }
+]
