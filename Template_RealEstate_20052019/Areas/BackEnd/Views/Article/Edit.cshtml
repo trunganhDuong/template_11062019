@@ -1,0 +1,62 @@
+﻿@model Template_RealEstate_20052019.Models.Article
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                @using (Html.BeginForm(FormMethod.Post))
+                {
+                    <div class="box-body">
+                        @Html.HiddenFor(x => x.ArticleId)
+
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.ArticleTitle)
+                            @Html.TextBoxFor(x => x.ArticleTitle, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.ArticleTitle, "", new { @class = "help-block" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Sapo)
+                            @Html.TextAreaFor(x => x.Sapo, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Sapo, "", new { @class = "help-block" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Content)
+                            @Html.TextAreaFor(x => x.Sapo, new { @id = "editorContent", @style = "display:none, visibility:hidden", @class = "form-control" })
+                            @Html.ValidationMessageFor(x => x.Sapo, "", new { @class = "help-block" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Avatar)
+                            <button id="btnSelect">Chọn ảnh</button>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Lưu</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script type="text/javascript" src="~/admin/bower_components/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="~/admin/dist/js/ckfinder/ckfinder.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            CKEDITOR.replace("editorContent");
+
+            $("#btnSelect").click(function (e) {
+                e.preventDefault();
+                CKFinder.selectActionFunction = function (url) {
+                    $("#srcImage").attr("src", url);
+                    $("#UrlImage").val(url);
+                };
+                CKFinder.popup();
+            });
+        });
+    </script>
+}

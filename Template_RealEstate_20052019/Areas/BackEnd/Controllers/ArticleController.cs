@@ -31,5 +31,20 @@ namespace Template_RealEstate_20052019.Areas.BackEnd.Controllers
 
             return View(articles);
         }
+
+        public async Task<IActionResult> Edit()
+        {
+            if (ItemId > 0)
+            {
+                var article = _articleRepository.GetById(ItemId);
+                SetPageTitle("Chỉnh sửa bài viết");
+
+                return View(article);
+            }
+
+            SetPageTitle("Thêm bài viết");
+
+            return View(new Article());
+        }
     }
 }
