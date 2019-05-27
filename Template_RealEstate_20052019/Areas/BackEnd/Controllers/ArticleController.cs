@@ -46,5 +46,18 @@ namespace Template_RealEstate_20052019.Areas.BackEnd.Controllers
 
             return View(new Article());
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Article article)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(article);
+            }
+
+            SetFlashMessage("Success");
+
+            return RedirectToAction("Edit");
+        }
     }
 }
