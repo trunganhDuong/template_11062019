@@ -1,0 +1,32 @@
+﻿@using Template_RealEstate_20052019.Models
+@model GridModel<Template_RealEstate_20052019.Models.Article>
+
+@if (Model?.Data != null && Model.Data.Any())
+{
+    <div class="page-head-blog">
+        <div class="single-blog-page">
+            <!-- recent start -->
+            <div class="left-blog">
+                <h4>Bài viết mới nhất</h4>
+                <div class="recent-post">
+                    @foreach (var item in Model.Data)
+                    {
+                        <div class="recent-single-post">
+                            <div class="post-img">
+                                @{
+                                    var action = Url.Action("Detail", "News", new { Area = "FrontEnd", ItemId = item.ArticleId });
+                                }
+                                <a href="@action">
+                                    <img src="~/upload/@item.Avatar" alt="">
+                                </a>
+                            </div>
+                            <div class="pst-content">
+                                <p><a href="@action"> @item.ArticleTitle</a></p>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}

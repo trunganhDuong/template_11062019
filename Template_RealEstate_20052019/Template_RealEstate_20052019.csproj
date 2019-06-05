@@ -1970,13 +1970,16 @@
   <ItemGroup>
     <PackageReference Include="BuildBundlerMinifier" Version="2.9.406" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.Internal" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Areas\BackEnd\ViewComponents\" />
     <Folder Include="CkfinderData\" />
+    <Folder Include="wwwroot\upload\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -6737,6 +6740,21 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="wwwroot\admin\bower_components\moment\moment.d.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\BackEnd\Views\Policy\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\BackEnd\Views\Policy\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\FrontEnd\Views\Policy\Detail.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Areas\FrontEnd\Views\Shared\Components\Policy\Default.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
 </Project>

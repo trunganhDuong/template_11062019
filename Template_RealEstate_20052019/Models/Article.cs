@@ -12,25 +12,26 @@ namespace Template_RealEstate_20052019.Models
 
         [Required(ErrorMessage = "Bạn cần nhập tiêu đề")]
         [MinLength(5, ErrorMessage = "Độ dài tối thiểu 5 ký tự")]
-        [MaxLength(255, ErrorMessage = "Độ dài tối đa 255 ký tự")]
-        [Display(Name = "Tiêu đề bài viết")]
+        [MaxLength(1024, ErrorMessage = "Độ dài tối đa 255 ký tự")]
+        [Display(Name = "Tiêu đề")]
         public string ArticleTitle { get; set; }
 
         [Required(ErrorMessage = "Bạn cần nhập sapo")]
         [MinLength(5, ErrorMessage = "Độ dài tối thiểu 5 ký tự")]
-        [MaxLength(1024, ErrorMessage = "Độ dài tối đa 1024 ký tự")]
-        [Display(Name = "Sapo bài viết")]
+        [MaxLength(2048, ErrorMessage = "Độ dài tối đa 1024 ký tự")]
+        [Display(Name = "Sapo")]
         public string Sapo { get; set; }
-        
+
         [Required(ErrorMessage = "Bạn cần nhập nội dung")]
         [MinLength(30, ErrorMessage = "Độ dài tối thiểu 30 ký tự")]
         [Display(Name = "Nội dung bài viết")]
         public string Content { get; set; }
 
-        [Required]
         [Display(Name = "Ảnh đại diện")]
         public string Avatar { get; set; }
 
         public DateTime CreatedDate { get; set; }
+
+        public bool IsPolicy { get; set; }
     }
 }

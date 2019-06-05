@@ -47,6 +47,7 @@ namespace Template_RealEstate_20052019.Repositories
             var result = new GridModel<Article>();
             param.Add_Parameter("@_PageIndex", searchRequest.PageIndex);
             param.Add_Parameter("@_PageSize", searchRequest.PageSize);
+            param.Add_Parameter("@_IsPolicy", searchRequest.IsPolicy);
 
             var data = _database.ExecuteToDataset("Article_Get", param, ExecuteTypeEnum.StoredProcedure);
             if (data != null && data.Tables.Count > 0)
@@ -68,6 +69,7 @@ namespace Template_RealEstate_20052019.Repositories
             param.Add_Parameter("@_Sapo", article.Sapo);
             param.Add_Parameter("@_Avatar", article.Avatar);
             param.Add_Parameter("@_Content", article.Content);
+            param.Add_Parameter("@_IsPolicy", article.IsPolicy);
 
             var data = _database.ExecuteScalar<int>("Article_Save", param, ExecuteTypeEnum.StoredProcedure);
 

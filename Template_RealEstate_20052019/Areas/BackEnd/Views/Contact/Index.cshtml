@@ -1,0 +1,104 @@
+﻿@using Template_RealEstate_20052019.Models
+@model Template_RealEstate_20052019.Models.GridModel<Contact>
+
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-xs-4 col-lg-offset-10 col-md-offset-10 col-md-offset-10">
+                            <a href="javascript:void(0);" type="button" id="btnExport" class="btn btn-block btn-primary">Xuất file</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách liên hệ</h3>
+                </div>
+                <div class="box-body">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-lg-1">Id</th>
+                                            <th class="col-lg-2">Họ tên</th>
+                                            <th class="col-lg-2">Điện thoại</th>
+                                            <th class="col-lg-3">Email</th>
+                                            <th class="col-lg-4">Lời nhắn</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model?.Data != null && Model.Data.Any())
+                                        {
+                                            foreach (var item in Model.Data)
+                                            {
+                                                <tr role="row">
+                                                    <td>@item.ContactId</td>
+                                                    <td>@item.Name</td>
+                                                    <td>@item.Phone</td>
+                                                    <td>@item.Email</td>
+                                                    <td>@item.Message</td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th class="col-lg-1">Id</th>
+                                            <th class="col-lg-2">Họ tên</th>
+                                            <th class="col-lg-2">Điện thoại</th>
+                                            <th class="col-lg-3">Email</th>
+                                            <th class="col-lg-4">Lời nhắn</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-7 col-sm-offset-5">
+                                @Html.Raw(Model.GeneratePagination())
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnExport").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "/Backend/Contact/Export",
+                    success: function (data) {
+                        exportToCsv(data);
+                    }
+                });
+            });
+        });
+
+        function exportToCsv(data) {
+            var type = "data:text/csv;charset=utf-8,%EF%BB%BF"
+            var str = "";
+            str += "Họ tên,Điện thoại,Email,Lời nhắn\n\n";
+            $.each(data, function (index, item) {
+                str += item.name + "," + item.phone + "," + item.email + "," + item.message + "\n";
+            });
+
+            var encodeUri = type + encodeURI(str);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodeUri);
+            link.setAttribute("download", "data.csv");
+            document.body.appendChild(link); // Required for FF
+
+            link.click(); // This
+        }
+    </script>
+}

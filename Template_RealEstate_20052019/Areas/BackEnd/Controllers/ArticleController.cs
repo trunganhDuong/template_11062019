@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,8 @@ namespace Template_RealEstate_20052019.Areas.BackEnd.Controllers
             var request = new SearchRequest
             {
                 PageIndex = PageIndex,
-                PageSize = Constants.ListPageSize
+                PageSize = Constants.ListPageSize,
+                IsPolicy= false
             };
             var articles = _articleRepository.GetList(request);
             SetPageTitle("Quản lý bài viết");
@@ -48,16 +50,41 @@ namespace Template_RealEstate_20052019.Areas.BackEnd.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Article article)
+        public async Task<IActionResult> Edit(Article article, IFormFile file)
         {
             if (!ModelState.IsValid)
             {
                 return View(article);
             }
 
-            SetFlashMessage("Success");
+            if (file != null)
+            {
+                article.Avatar = file.FileName;
+                UploadFile(new List<IFormFile> { file });
+            }
 
-            return RedirectToAction("Edit");
+            article.IsPolicy = false;
+            _articleRepository.Save(article);
+            SetFlashMessage("Thêm bài viết thành công");
+
+            return RedirectToAction("Edit", new { itemId = article.ArticleId});
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete()
+        {
+            if (ItemId <= 0)
+            {
+                SetFlashMessage("Có lỗi xảy ra", false);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                _articleRepository.Delete(ItemId);
+                SetFlashMessage("Xóa tin thành công");
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

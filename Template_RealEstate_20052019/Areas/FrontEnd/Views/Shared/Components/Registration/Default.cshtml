@@ -1,0 +1,108 @@
+﻿@model Template_RealEstate_20052019.Models.ContactInformation
+
+@if (Model != null)
+{
+    <div id="contact" class="about-area contact-area">
+        <div class="contact-inner area-padding">
+            <div class="contact-overly"></div>
+            <div class="container ">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="section-headline text-center">
+                            <h2>Liên hệ với chúng tôi</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="contact-icon text-center">
+                            <div class="single-icon">
+                                <i class="fa fa-mobile"></i>
+                                <p>
+                                    @if (!string.IsNullOrEmpty(Model.Mobile))
+                                    {
+                                        @Html.Raw($"Di động: {Model.Mobile} <br>")
+                                    }
+                                    @if (!string.IsNullOrEmpty(Model.Phone))
+                                    {
+                                        @Html.Raw($"Điện thoại: {Model.Phone} <br>")
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Start contact icon column -->
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="contact-icon text-center">
+                            <div class="single-icon">
+                                <i class="fa fa-envelope"></i>
+                                <p>
+                                    @if (!string.IsNullOrEmpty(Model.Email))
+                                    {
+                                        @Html.Raw($"Email: {Model.Email} <br>")
+                                    }
+                                    @if (!string.IsNullOrEmpty(Model.Website))
+                                    {
+                                        @Html.Raw($"<span>Web: {Model.Website}</span>")
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Start contact icon column -->
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="contact-icon text-center">
+                            <div class="single-icon">
+                                <i class="fa fa-map-marker"></i>
+                                <p>
+                                    @if (!string.IsNullOrEmpty(Model.Address))
+                                    {
+                                        @Html.Raw($"Địa chỉ: {Model.Address}<br>")
+                                    }
+                                    <span>@Model.District, @Model.City</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <!-- Start Google Map -->
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <!-- Start Map -->
+                        <iframe src="@Model.MapAddress" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        <!-- End Map -->
+                    </div>
+                    <!-- End Google Map -->
+                    <!-- Start  contact -->
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="form contact-form">
+                            <div id="sendmessage">Cảm ơn bạn đã liên hệ với chúng tôi!</div>
+                            <div id="errormessage"></div>
+                            <form action="@Url.Action("Send", "Contact", new { Area="FrontEnd"})" method="post" role="form" class="contactForm">
+                                <div class="form-group">
+                                    <input type="text" name="Name" class="form-control" id="name" placeholder="Họ Tên" data-rule="minlen:4" data-msg="Hãy nhập ít nhất 4 ký tự" />
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="Email" id="email" placeholder="Địa chỉ email" data-rule="email" data-msg="Hãy nhập đúng định dạng email" />
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="Phone" id="phone" placeholder="Số điện thoại" data-rule="phone" data-msg="Hãy nhập đúng số điện thoại" />
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="Message" rows="5" data-msg="Lời nhắn cho chúng tôi" placeholder="Message"></textarea>
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="text-center"><button type="submit">Đăng ký</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

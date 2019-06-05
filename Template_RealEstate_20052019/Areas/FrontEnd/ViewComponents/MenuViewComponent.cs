@@ -16,9 +16,16 @@ namespace Template_RealEstate_20052019.Areas.FrontEnd.ViewComponents
         {
             this._configuration = configuration;
         }
-        public async Task<IViewComponentResult> InvokeAsync()
+        public async Task<IViewComponentResult> InvokeAsync(bool isNews = false)
         {
             List<Menu> menu = _configuration.GetSection("Menu").Get<List<Menu>>();
+            if (isNews)
+            {
+                foreach(var item in menu)
+                {
+                    item.Href = "/" + item.Href;
+                }
+            }
 
             return View(menu);
         }
