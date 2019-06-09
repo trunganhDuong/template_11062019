@@ -1,0 +1,73 @@
+﻿@using Template_RealEstate_20052019.Areas.FrontEnd.Models
+@using Template_RealEstate_20052019.Extensions
+@model Template_RealEstate_20052019.Models.GridModel<Utility>
+
+
+<section class="padding-15 container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-xs-4 col-lg-offset-10 col-md-offset-10 col-md-offset-10">
+                            <a href="@Url.Action("Edit", "Utility", new { Area="Backend"})" type="button" class="btn btn-block btn-primary">Thêm</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Danh sách tiện ích</h3>
+                </div>
+                <div class="box-body">
+                    <div class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-lg-1">Id</th>
+                                            <th class="col-lg-3">Loại tiện ích</th>
+                                            <th class="col-lg-5">Mô tả</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (Model?.Data != null && Model.Data.Any())
+                                        {
+                                            foreach (var item in Model.Data)
+                                            {
+                                                <tr role="row">
+                                                    <td>@item.UtilityId</td>
+                                                    <td>@item.Type.GetDescription()</td>
+                                                    <td>@item.Description</td>
+                                                    <td>
+                                                        <a href="@Url.Action("Edit", "Utility", new { Area="Backend", itemId = item.UtilityId})">Sửa</a>
+                                                        <a href="#" onclick="return confirmDelete($(this));" data-url="@Url.Action("Delete", "Utility", new { Area="Backend", itemId = item.UtilityId})">Xóa</a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th class="col-lg-1">Id</th>
+                                            <th class="col-lg-3">Loại tiện ích</th>
+                                            <th class="col-lg-5">Mô tả</th>
+                                            <th>Hành động</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-7 col-sm-offset-5">
+                                @Html.Raw(Model.GeneratePagination())
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

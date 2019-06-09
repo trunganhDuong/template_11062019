@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -54,6 +55,18 @@ namespace Template_RealEstate_20052019.Extensions
             }
 
             return attrDescription.ClassName;
+        }
+
+        public static SelectList ToSelectList(this UtilitiEnum input)
+        {
+            var result = new List<SelectListItem>();
+            var listValue = Enum.GetValues(typeof(UtilitiEnum));
+            foreach (var item in listValue)
+            {
+                result.Add(new SelectListItem(((UtilitiEnum)item).GetDescription(), ((int)item).ToString()));
+            }
+
+            return new SelectList(result, "Value", "Text", -1);
         }
     }
 }

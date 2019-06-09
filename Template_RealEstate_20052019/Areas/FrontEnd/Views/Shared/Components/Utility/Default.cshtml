@@ -1,23 +1,24 @@
 ﻿@using Template_RealEstate_20052019.Areas.FrontEnd.Models
 @using Template_RealEstate_20052019.Extensions
-@model List<Utility>
+@using Template_RealEstate_20052019.Models
+@model GridModel<Utility>
 
-@if (Model != null && Model.Any())
+@if (Model?.Data != null && Model.Data.Any())
 {
     <!-- Start Service area -->
-    <div id="utility" class="services-area area-padding">
+    <div id="utility" class="section-padding wow fadeIn delay-05s">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="section-headline services-head text-center">
-                        <h2>Tiện ích</h2>
-                    </div>
+                <div class="col-md-12 text-center">
+                    <h2 class="service-title pad-bt15">Tiện ích</h2>
+                    <p class="sub-title pad-bt15"></p>
+                    <hr class="bottom-line">
                 </div>
             </div>
             <div class="row text-center">
                 <div class="services-contents">
                     <!-- Start Left services -->
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Data)
                     {
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="about-move">
@@ -40,4 +41,3 @@
     </div>
     <!-- End Service area -->
 }
-
