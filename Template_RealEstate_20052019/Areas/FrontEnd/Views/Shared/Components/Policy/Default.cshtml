@@ -4,16 +4,14 @@
 
 @if (Model?.Data != null && Model.Data.Any())
 {
-    <div id="policy" class="blog-area">
+    <div id="policy" class="section-padding">
         <div class="blog-inner area-padding">
             <div class="blog-overly"></div>
             <div class="container ">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="section-headline text-center">
-                            <h2>Chính sách mới nhất</h2>
-                        </div>
-                    </div>
+                <div class="page-title text-center">
+                    <h1>Chính sách mới nhất</h1>
+                    <p></p>
+                    <hr class="pg-titl-bdr-btm"></hr>
                 </div>
                 <div class="row">
                     @foreach (var item in Model.Data)

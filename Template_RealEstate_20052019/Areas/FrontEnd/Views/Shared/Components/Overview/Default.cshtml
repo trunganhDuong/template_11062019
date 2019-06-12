@@ -4,14 +4,12 @@
 @if (Model != null)
 {
     <!-- Start About area -->
-    <div id="overview" class="area-padding">
+    <div id="overview" class="section-padding">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="section-headline text-center">
-                        <h2>Tổng quan dự án</h2>
-                    </div>
-                </div>
+            <div class="page-title text-center">
+                <h1>Tổng quan dự án</h1>
+                <p></p>
+                <hr class="pg-titl-bdr-btm"></hr>
             </div>
             <div class="row">
                 <!-- single-well start-->
@@ -19,7 +17,7 @@
                     <div class="well-left">
                         <div class="single-well">
                             <a href="#">
-                                <img src="@Model.Image" alt="">
+                                <img style="height:auto; width: 100%;" src="@Model.Image" alt="">
                             </a>
                         </div>
                     </div>
@@ -28,16 +26,16 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="well-middle">
                         <div class="single-well">
-                            <a href="#">
-                                <h4 class="sec-head">@Model.ProjectName</h4>
-                            </a>
+                            <div class="service-text">
+                                <h3>@Model.ProjectName</h3>
+                            </div>
                             @if (!string.IsNullOrEmpty(Model.ProjectSlogan))
                             {
                                 <p>
                                     @Model.ProjectSlogan
                                 </p>
                             }
-                            <ul>
+                            <ul style="list-style: none;">
                                 @if (!string.IsNullOrEmpty(Model.InvestorName))
                                 {
                                     <li>

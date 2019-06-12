@@ -4,39 +4,33 @@
 @if (Model != null)
 {
     <!-- Start About area -->
-    <div id="location" class="about-area area-padding">
+    <div id="location" class="about-area area-padding section-padding">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="section-headline text-center">
-                        <h2>Vị trí</h2>
-                    </div>
-                </div>
+            <div class="page-title text-center">
+                <h1>Vị trí</h1>
+                <p></p>
+                <hr class="pg-titl-bdr-btm"></hr>
             </div>
             <div class="row">
                 <!-- single-well start-->
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="well-left">
-                        <a href="#">
+                        <div class="service-text">
                             <h4 class="sec-head">@Model.Header</h4>
                             <p>
                                 @Html.Raw(Model.Description)
                             </p>
-                        </a>
+                        </div>
                     </div>
                 </div>
                 <!-- single-well end-->
                 <div class="col-md-6 col-sm-6 col-xs-12">
-                    <div class="well-middle">
-                        <div class="single-well">
-                            @if (!string.IsNullOrEmpty(Model.MapImage))
-                            {
-                                <a href="#">
-                                    <img src="@Model.MapImage" alt="">
-                                </a>
-                            }
-                        </div>
-                    </div>
+                    @if (!string.IsNullOrEmpty(Model.MapImage))
+                    {
+                        <a href="#">
+                            <img src="@Model.MapImage" alt="">
+                        </a>
+                    }
                 </div>
                 <!-- End col-->
             </div>

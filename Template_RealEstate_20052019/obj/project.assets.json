@@ -12568,11 +12568,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Template_RealEstate_20052019\\Template_RealEstate_20052019\\Template_RealEstate_20052019.csproj",
+      "projectUniqueName": "D:\\Projects\\Template_RealEstate_06112019\\Template_RealEstate_20052019\\Template_RealEstate_20052019.csproj",
       "projectName": "Template_RealEstate_20052019",
-      "projectPath": "D:\\Projects\\Template_RealEstate_20052019\\Template_RealEstate_20052019\\Template_RealEstate_20052019.csproj",
+      "projectPath": "D:\\Projects\\Template_RealEstate_06112019\\Template_RealEstate_20052019\\Template_RealEstate_20052019.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Template_RealEstate_20052019\\Template_RealEstate_20052019\\obj\\",
+      "outputPath": "D:\\Projects\\Template_RealEstate_06112019\\Template_RealEstate_20052019\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
