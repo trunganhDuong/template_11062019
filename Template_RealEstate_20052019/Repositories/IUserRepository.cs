@@ -11,5 +11,7 @@ namespace Template_RealEstate_20052019.Repositories
         bool CreateUser(User user);
 
         User Validate(User user);
+
+        bool UpdatePassword(User user, string newPassword);
     }
 }

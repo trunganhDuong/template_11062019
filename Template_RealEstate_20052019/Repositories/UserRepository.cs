@@ -30,6 +30,23 @@ namespace Template_RealEstate_20052019.Repositories
             return data == 1;
         }
 
+        public bool UpdatePassword(User user, string newPassword)
+        {
+            var dbUser = GetUser(user);
+            if (!Crypto.VerifyPassword(dbUser.Password, user.Password))
+            {
+                return false;
+            }
+
+            var param = new SqlServerParameter();
+            param.Add_Parameter("@_UserId", user.UserId);
+            param.Add_Parameter("@_NewPassword", Crypto.HashPassword(newPassword));
+
+            var data = _database.ExecuteScalar<int>("User_UpdatePassword", param, ExecuteTypeEnum.StoredProcedure);
+
+            return data == 1;
+        }
+
         public User Validate(User user)
         {
             if (user == null)

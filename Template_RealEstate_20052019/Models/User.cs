@@ -16,5 +16,7 @@ namespace Template_RealEstate_20052019.Models
         public string Email { get; set; }
 
         public UserEnum.UserType UserType { get; set; }
+
+        public int UserId { get; set; }
     }
 }

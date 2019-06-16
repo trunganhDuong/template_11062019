@@ -77,13 +77,16 @@ namespace Template_RealEstate_20052019.Areas.BackEnd.Base
             }
         }
 
-        protected void SetAccountSession(User user)
+        protected async void SetAccountSession(User user)
         {
+            await HttpContext.Session.LoadAsync();
             HttpContext.Session.SetString(Constants.AccountSessionKey, JsonConvert.SerializeObject(user));
+            await HttpContext.Session.CommitAsync();
         }
 
-        protected void RemoveAccountSession()
+        protected async void RemoveAccountSession()
         {
+            await HttpContext.Session.LoadAsync();
             HttpContext.Session.Remove(Constants.AccountSessionKey);
         }
 
@@ -101,8 +104,9 @@ namespace Template_RealEstate_20052019.Areas.BackEnd.Base
             }
         }
 
-        private void HandleAuthendication()
+        private async void HandleAuthendication()
         {
+            await HttpContext.Session.LoadAsync();
             var sessionData = HttpContext.Session.GetString(Constants.AccountSessionKey)?.ToString();
             if (string.IsNullOrEmpty(sessionData))
             {
