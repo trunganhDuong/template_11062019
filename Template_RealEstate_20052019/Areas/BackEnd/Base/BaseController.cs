@@ -77,6 +77,23 @@ namespace Template_RealEstate_20052019.Areas.BackEnd.Base
             }
         }
 
+        protected async Task<string> UploadFile(IFormFile file)
+        {
+            if (file == null)
+            {
+                return string.Empty;
+            }
+
+            var fileName = DateTime.UtcNow.ToString("ddMMyyyyHHmmss") + file.FileName;
+            var path = Path.Combine(Directory.GetCurrentDirectory(), Constants.UploadFilePath, fileName);
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+
+            return fileName;
+        }
+
         protected async void SetAccountSession(User user)
         {
             await HttpContext.Session.LoadAsync();
